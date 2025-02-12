@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # 📦 Abhängigkeiten und Source-Code ins Image kopieren
-COPY target/cicd_pipeline-2.0-SNAPSHOT.jar app.jar
+COPY target/cicd_pipeline-3.0-SNAPSHOT.jar app.jar
 
 # 🏃 Befehl zum Starten der Anwendung
 CMD ["java", "-jar", "app.jar"]
