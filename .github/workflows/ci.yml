@@ -40,4 +40,4 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-pipeline-demo:${{ github.event.pusher.timestamp | format('%Y%m%d-%H%M%S') }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-pipeline-demo:${{ format('%Y%m%d-%H%M%S') }}
