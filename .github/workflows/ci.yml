@@ -33,6 +33,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+      - name: Get the current date and time
+        id: date
+        run: |
+          date_tag=$(date +'%Y%m%d-%H%M%S')
+          echo "::set-output name=date_tag::$date_tag"
 
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v5
@@ -40,4 +45,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-pipeline-demo:${{ format('%Y%m%d-%H%M%S') }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd-pipeline-demo:${{ steps.date.outputs.date_tag }}
+
+
